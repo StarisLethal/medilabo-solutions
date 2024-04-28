@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: ms-patients
+            uri: ${PATIENTS_ROUTE_URI:http://localhost:8081}
+            predicates:
+              - Path=/patients/**
+            filters:
+              - PrefixPath=/api/v1
+              - AddResponseHeader=X-Powered-By,Medilabo Gateway Service
