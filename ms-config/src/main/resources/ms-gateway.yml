@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: ms-gateway
   cloud:
     gateway:
       mvc:
@@ -9,4 +11,4 @@ spring:
               - Path=/patients/**
             filters:
               - PrefixPath=/api/v1
-              - AddResponseHeader=X-Powered-By,Medilabo Gateway Service
+              - AddResponseHeader=X-Powered-By, Medilabo Gateway Service
