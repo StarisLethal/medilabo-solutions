@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table>
+<tr>
+<form action="/editedRecord" th:object="${patient}" method="post">
+    <label for="firstName">Prénom:</label>
+    <input type="text" id="firstName" name="firstName" th:value="${patient.getFirstName()}" required><br><br>
+
+    <label for="lastName">Nom:</label>
+    <input type="text" id="lastName" name="lastName" th:value="${patient.getLastName()}" required><br><br>
+
+    <label for="dob">Date de naissance:</label>
+    <input type="date" id="dob" name="dob" th:value="${#dates.format(patient.getBirthDate(), 'yyyy-MM-dd')}" required /><br>
+
+    <label for="gender">Genre:</label>
+    <select id="gender" name="gender" required>
+        <option value="M" th:selected="${patient.getGender() == 'M'}">Masculin</option>
+        <option value="F" th:selected="${patient.getGender() == 'F'}">Féminin</option>
+        <option value="other" th:selected="${patient.getGender() == 'Other'}">Autre</option>
+    </select><br><br>
+
+    <label for="address">Adresse:</label>
+    <input type="text" id="address" name="address" th:value="${patient.getAddress()}"><br><br>
+
+    <label for="phone">Téléphone:</label>
+    <input type="tel" id="phone" name="phone" th:value="${patient.getPhone()}"><br><br>
+
+    <input type="submit" value="Edit patient record">
+</form>
+</tr>
+</table>
+</body>
+</html>

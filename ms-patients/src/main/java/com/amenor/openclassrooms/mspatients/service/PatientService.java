@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class PatientService {
@@ -25,6 +26,7 @@ public class PatientService {
     }
 
     public Patient addPatient(Patient patient) {
+        patient.setId(UUID.randomUUID().toString());
         return patientRepository.save(patient);
     }
 

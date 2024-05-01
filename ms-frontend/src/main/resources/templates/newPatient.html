@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Formulaire de Création de Patient</h1>
+<form action="/createPatient" method="post">
+    <label for="firstName">Prénom:</label>
+    <input type="text" id="firstName" name="firstName" required><br><br>
+
+    <label for="lastName">Nom:</label>
+    <input type="text" id="lastName" name="lastName" required><br><br>
+
+    <label for="birthDate">Date de naissance:</label>
+    <input type="date" id="birthDate" name="birthDate" required><br><br>
+
+    <label for="gender">Genre:</label>
+    <select id="gender" name="gender" required>
+        <option value="male">Masculin</option>
+        <option value="female">Féminin</option>
+        <option value="other">Autre</option>
+    </select><br><br>
+
+    <label for="address">Adresse:</label>
+    <input type="text" id="address" name="address"><br><br>
+
+    <label for="phone">Téléphone:</label>
+    <input type="tel" id="phone" name="phone"><br><br>
+
+    <input type="submit" value="Create patient record">
+</form>
+
+</body>
+</html>
