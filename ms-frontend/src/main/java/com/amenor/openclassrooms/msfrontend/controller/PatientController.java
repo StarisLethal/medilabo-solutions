@@ -3,11 +3,8 @@ package com.amenor.openclassrooms.msfrontend.controller;
 import com.amenor.openclassrooms.msfrontend.bean.PatientBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import com.amenor.openclassrooms.msfrontend.proxies.PatientProxy;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 
@@ -43,13 +40,27 @@ public class PatientController {
     @GetMapping("/editRecord")
     public String editRecord(Model model, String id) {
         model.addAttribute("patient", patientProxy.getPatientById(id));
+        model.addAttribute("id", id);
         return "editRecord";
     }
 
     @PutMapping("/editedRecord")
-    public String editRecord(@ModelAttribute PatientBean patientBean, String id, Model model) {
-        model.addAttribute("patient", patientProxy.getPatientById(id));
-        patientProxy.updatePatient(id, patientBean);
+    public String editRecord(@ModelAttribute PatientBean patientBean, Model model) {
+
+        model.addAttribute("patient", patientProxy.getPatientById(patientBean.getId()));
+        patientProxy.updatePatient(patientBean.getId(), patientBean);
+        return "redirect:";
+    }
+
+    @GetMapping("/deletePatient")
+    public String deletePatient(@ModelAttribute PatientBean patientBean, Model model) {
+        model.addAttribute("patient", patientProxy.getPatientById(patientBean.getId()));
+        return "deletePatient";
+    }
+
+    @DeleteMapping("/confirmedDelete")
+    public String confirmedDelete(@ModelAttribute PatientBean patientBean) {
+        patientProxy.deletePatient(patientBean.getId());
         return "redirect:";
     }
 }
