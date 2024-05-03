@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import com.amenor.openclassrooms.msfrontend.proxies.PatientProxy;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class PatientController {
@@ -38,7 +39,7 @@ public class PatientController {
     }
 
     @GetMapping("/editRecord")
-    public String editRecord(Model model, String id) {
+    public String editRecord(Model model, UUID id) {
         model.addAttribute("patient", patientProxy.getPatientById(id));
         model.addAttribute("id", id);
         return "editRecord";

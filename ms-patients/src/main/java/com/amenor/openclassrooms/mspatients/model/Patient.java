@@ -6,13 +6,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
+import java.util.UUID;
 
 @Document(collection = "patients")
 public class Patient {
 
     @Id
     @Field("_id")
-    private String id;
+    private UUID id;
     private String firstName;
     private String lastName;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -21,7 +22,7 @@ public class Patient {
     private String address;
     private String phone;
 
-    public Patient(String id, String firstName, String lastName, Date birthDate, String gender, String address, String phone) {
+    public Patient(UUID id, String firstName, String lastName, Date birthDate, String gender, String address, String phone) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -31,11 +32,11 @@ public class Patient {
         this.phone = phone;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

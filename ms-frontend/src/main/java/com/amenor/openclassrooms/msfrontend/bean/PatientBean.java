@@ -3,10 +3,11 @@ package com.amenor.openclassrooms.msfrontend.bean;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class PatientBean {
 
-    private String id;
+    private UUID id;
     private String firstName;
     private String lastName;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -15,11 +16,11 @@ public class PatientBean {
     private String address;
     private String phone;
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

@@ -11,6 +11,7 @@ import com.amenor.openclassrooms.mspatients.service.PatientService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,7 +37,7 @@ public class PatientController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Patient>> getPatientById(@PathVariable String id) {
+    public ResponseEntity<Optional<Patient>> getPatientById(@PathVariable UUID id) {
         try {
             logger.info("getPatientById called");
             Optional<Patient> patient = patientService.getPatientById(id);
@@ -60,7 +61,7 @@ public class PatientController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Patient> updatePatient(@PathVariable String id, @RequestBody Patient patient) {
+    public ResponseEntity<Patient> updatePatient(@PathVariable UUID id, @RequestBody Patient patient) {
         try {
             logger.info("updatePatient called");
             Boolean updatePatient = patientService.updatePatient(patient, id);
@@ -76,7 +77,7 @@ public class PatientController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletePatient(@PathVariable String id) {
+    public ResponseEntity<String> deletePatient(@PathVariable UUID id) {
         try {
             logger.info("deletePatient called");
             patientService.deletePatient(id);

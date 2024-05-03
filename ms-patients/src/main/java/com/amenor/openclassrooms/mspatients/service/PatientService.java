@@ -21,16 +21,16 @@ public class PatientService {
         return patientRepository.findAll();
     }
 
-    public Optional<Patient> getPatientById(String id) {
+    public Optional<Patient> getPatientById(UUID id) {
         return patientRepository.findById(id);
     }
 
     public Patient addPatient(Patient patient) {
-        patient.setId(UUID.randomUUID().toString());
+        patient.setId(UUID.randomUUID());
         return patientRepository.save(patient);
     }
 
-    public Boolean updatePatient(Patient patient, String id) {
+    public Boolean updatePatient(Patient patient, UUID id) {
         Optional<Patient> oldPatient = patientRepository.findById(id);
 
         if (oldPatient.isPresent()) {
@@ -47,7 +47,7 @@ public class PatientService {
         return false;
     }
 
-    public void deletePatient(String id) {
+    public void deletePatient(UUID id) {
         patientRepository.deleteById(id);
     }
 
