@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a th:if="${not #lists.isEmpty(patientNotes)}" th:href="@{/newNote(patientId=${patientNotes[0].patientId})}">Create Note</a></br></br></br>
+
+<table>
+    <tbody>
+    <tr th:each="patientNote : ${patientNotes}">
+        <td th:text="'Note: ' + ${patientNote.patientNote}"></td>
+    </tr>
+    </tbody>
+</table>
+</br></br></br>
+<a th:href="@{/}">Home</a>
+</body>
+</html>

@@ -46,7 +46,7 @@ public class PatientNoteController {
         }
     }
 
-    @GetMapping("/{patientNoteId}")
+    @GetMapping("/byNote/{patientNoteId}")
     public ResponseEntity<Optional<PatientNote>> getPatientNoteById(@PathVariable("patientNoteId") UUID patientNoteId) {
         try {
             logger.info("getPatientNoteByPatientId called");
@@ -59,10 +59,10 @@ public class PatientNoteController {
     }
 
     @PostMapping("")
-    public ResponseEntity<PatientNote> createPatientNote(@RequestBody PatientNote patientNote, @RequestParam UUID patientNoteId, @RequestParam String lastName) {
+    public ResponseEntity<PatientNote> createPatientNote(@RequestBody PatientNote patientNote) {
         try {
             logger.info("createPatientNote called");
-            PatientNote newpatientNote = patientNoteService.createPatientNote(patientNote, patientNoteId, lastName);
+            PatientNote newpatientNote = patientNoteService.createPatientNote(patientNote);
             return ResponseEntity.status(HttpStatus.CREATED).body(newpatientNote);
         } catch (Exception e) {
             logger.log(Level.SEVERE, "createPatientNote failed", e);

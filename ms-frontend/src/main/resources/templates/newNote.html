@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Formulaire de Création de Patient</h1>
+<form th:action="@{/createNote}" th:object="${patientNote}" method="post">
+    <input type="hidden" th:field="*{patientId}" />
+    <div>
+        <label for="note">Note:</label>
+        <textarea id="note" th:field="*{patientNote}" placeholder="Enter note here..." rows="4" cols="50"></textarea>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>

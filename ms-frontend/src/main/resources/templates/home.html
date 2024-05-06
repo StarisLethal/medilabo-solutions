@@ -29,7 +29,10 @@
         <td th:text="${patient.address}"></td>
         <td th:text="${patient.phone}"></td>
         <td><a th:href="@{/editRecord(id=${patient.id})}" class="btn btn-default">Edit</a></td>
-        <td><a th:href="@{/deletePatient(id=${patient.id})}" class="btn btn-default">Delete</a></td>
+        <td><a th:href="@{/patientNotes(id=${patient.id})}">View Notes</a></td>
+        <td><a th:href="@{/newNote(patientId=${patient.id})}" class="btn btn-default">Create Note</a></td>
+<!--        <td><a th:href="@{/deletePatient(id=${patient.id})}" class="btn btn-default">Delete</a></td>-->
+
     </tr>
     </tbody>
 </table>

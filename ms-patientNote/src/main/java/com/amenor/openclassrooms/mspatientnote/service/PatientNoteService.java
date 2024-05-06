@@ -30,10 +30,8 @@ public class PatientNoteService {
         return patientNoteRepository.findById(PatientNoteId);
     }
 
-    public PatientNote createPatientNote(PatientNote patientNote, UUID patientId, String lastName) {
+    public PatientNote createPatientNote(PatientNote patientNote) {
         patientNote.setPatientNoteId(UUID.randomUUID());
-        patientNote.setPatientId(patientId);
-        patientNote.setPatientName(lastName);
         return patientNoteRepository.save(patientNote);
     }
 }
