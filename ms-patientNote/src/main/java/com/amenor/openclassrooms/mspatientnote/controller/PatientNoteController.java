@@ -3,10 +3,12 @@ package com.amenor.openclassrooms.mspatientnote.controller;
 import com.amenor.openclassrooms.mspatientnote.model.PatientNote;
 import com.amenor.openclassrooms.mspatientnote.service.PatientNoteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -69,5 +71,18 @@ public class PatientNoteController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-}
 
+    @GetMapping("/diagnose")
+    public ResponseEntity<String> getDiabeteDiagnose(@RequestParam("id") UUID id,
+                                                    @RequestParam("gender") String gender,
+                                                    @RequestParam("birthDate") String birtDate) {
+        try {
+            logger.info("getDiabeteDignose called");
+            String diagnose = patientNoteService.diabeteDiagnose(birtDate, gender, id);
+            return ResponseEntity.ok(diagnose);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "getDiabeteDignose failed", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+}

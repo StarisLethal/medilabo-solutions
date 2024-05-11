@@ -3,10 +3,7 @@ package com.amenor.openclassrooms.msfrontend.proxies;
 import com.amenor.openclassrooms.msfrontend.bean.PatientBean;
 import com.amenor.openclassrooms.msfrontend.bean.PatientNoteBean;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -22,4 +19,7 @@ public interface PatientNoteProxy {
 
     @PostMapping("/patientNotes")
     PatientNoteBean createPatientNote(@RequestBody PatientNoteBean patientNoteBean);
+
+    @GetMapping("/patientNotes/diagnose")
+    String getDiabeteDiagnose(@RequestParam("patientId") UUID patienId, Integer age, String gender);
 }
