@@ -61,17 +61,18 @@ public class PatientNoteService {
 
         Integer symptomCount = 0;
         for (Map.Entry<String, String> entry : symptomList.entrySet()) {
-            String symptom = entry.getKey();
             Pattern pattern = Pattern.compile(entry.getValue());
             for (String note : noteToCount) {
-                System.out.println("Checking note: [" + note + "] for symptom regex: [" + entry.getValue() + "]");
+/*                System.out.println("Checking note: [" + note + "] for symptom regex: [" + entry.getValue() + "]");*/
                 if (pattern.matcher(note).find()) {
                     symptomCount++;
-                    System.out.println("Match found in note: [" + note + "] for symptom: " + symptom);
+
+/*                    System.out.println("Match found in note: [" + note + "] for symptom: " + symptom);*/
                     break;
                 }
             }
         }
+        System.out.println(symptomCount);
         return symptomCount;
     }
 
@@ -99,7 +100,7 @@ public class PatientNoteService {
     public Boolean diabeteBorderLine(String birthDate, UUID id) {
         Integer symptom = symptomCount(id);
         Integer age = getAge(birthDate);
-        if ((age >= 30) && (symptom > 2 && symptom < 5)) {
+        if ((age >= 30) && (symptom >= 2 && symptom <= 5)) {
             System.out.println(symptom);
             return true;
         }

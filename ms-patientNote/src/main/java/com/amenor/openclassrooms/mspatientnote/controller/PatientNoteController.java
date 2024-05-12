@@ -73,12 +73,12 @@ public class PatientNoteController {
     }
 
     @GetMapping("/diagnose")
-    public ResponseEntity<String> getDiabeteDiagnose(@RequestParam("id") UUID id,
+    public ResponseEntity<String> getDiabeteDiagnose(@RequestParam("patientId") UUID patientId,
                                                     @RequestParam("gender") String gender,
-                                                    @RequestParam("birthDate") String birtDate) {
+                                                    @RequestParam("birthDate") String birthDate) {
         try {
             logger.info("getDiabeteDignose called");
-            String diagnose = patientNoteService.diabeteDiagnose(birtDate, gender, id);
+            String diagnose = patientNoteService.diabeteDiagnose(birthDate, gender, patientId);
             return ResponseEntity.ok(diagnose);
         } catch (Exception e) {
             logger.log(Level.SEVERE, "getDiabeteDignose failed", e);

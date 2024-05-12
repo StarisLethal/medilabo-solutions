@@ -42,4 +42,13 @@ public class PatientNoteController {
         patientNoteProxy.createPatientNote(patientNoteBean);
         return "redirect:/patientNotes?id=" + patientNoteBean.getPatientId();
     }
+
+    @GetMapping("/diagnose")
+    public String diagnose(@RequestParam UUID patientId,
+                           @RequestParam String birthDate,
+                           @RequestParam String gender,
+                           Model model) {
+        model.addAttribute("diagnose", patientNoteProxy.getDiabeteDiagnose(patientId, birthDate, gender));
+        return "diagnose";
+    }
 }

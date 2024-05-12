@@ -21,5 +21,7 @@ public interface PatientNoteProxy {
     PatientNoteBean createPatientNote(@RequestBody PatientNoteBean patientNoteBean);
 
     @GetMapping("/patientNotes/diagnose")
-    String getDiabeteDiagnose(@RequestParam("patientId") UUID patienId, Integer age, String gender);
+    String getDiabeteDiagnose(@RequestParam("patientId") UUID patientId,
+                              @RequestParam("birthDate") String birthDate,
+                              @RequestParam("gender") String gender);
 }
