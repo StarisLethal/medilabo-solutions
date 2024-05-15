@@ -1,12 +1,12 @@
 package com.amenor.openclassrooms.mspatientnote.service;
 
+import com.amenor.openclassrooms.mspatientnote.config.SymptomDictionary;
 import com.amenor.openclassrooms.mspatientnote.model.PatientNote;
 import com.amenor.openclassrooms.mspatientnote.repository.PatientNoteRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.regex.Pattern;
@@ -15,9 +15,12 @@ import java.util.regex.Pattern;
 public class PatientNoteService {
 
     final private PatientNoteRepository patientNoteRepository;
+    final private SymptomDictionary symptomDictionary;
 
-    public PatientNoteService(PatientNoteRepository patientNoteRepository) {
+    public PatientNoteService(PatientNoteRepository patientNoteRepository, SymptomDictionary symptomDictionary) {
         this.patientNoteRepository = patientNoteRepository;
+        this.symptomDictionary = symptomDictionary;
+        System.out.println("Injected SymptomDictionary: " + symptomDictionary.getDictionary());
     }
 
     public List<PatientNote> getAllPatientNotes() {
@@ -37,8 +40,6 @@ public class PatientNoteService {
         return patientNoteRepository.save(patientNote);
     }
 
-    //TODO 2 method one with mongodb word count one in java
-
     public Integer symptomCount(UUID id) {
         List<String> list = patientNoteRepository.findPatientNoteByPatientId(id);
 
@@ -46,33 +47,16 @@ public class PatientNoteService {
                 .map(note -> note.replaceAll("\\p{Punct}", "").toLowerCase())
                 .toList();
 
-        Map<String, String> symptomList = new HashMap<>();
-        symptomList.put("fume", "fume(ur|use|r)?");
-        symptomList.put("hémoglobine", "hémoglobine a1c");
-        symptomList.put("microalbumine", "microalbumine");
-        symptomList.put("taille", "taille");
-        symptomList.put("poids", "poids(?!\\s+(égal ou inférieur|recommandé))");
-        symptomList.put("anormal", "anormal");
-        symptomList.put("cholestérol", "cholestérol");
-        symptomList.put("vertige", "vertige(s)?");
-        symptomList.put("rechute", "rechute");
-        symptomList.put("réaction", "réaction");
-        symptomList.put("anticorps", "anticorps");
-
         Integer symptomCount = 0;
-        for (Map.Entry<String, String> entry : symptomList.entrySet()) {
+        for (Map.Entry<String, String> entry : symptomDictionary.getDictionary().entrySet()) {
             Pattern pattern = Pattern.compile(entry.getValue());
             for (String note : noteToCount) {
-/*                System.out.println("Checking note: [" + note + "] for symptom regex: [" + entry.getValue() + "]");*/
                 if (pattern.matcher(note).find()) {
                     symptomCount++;
-
-/*                    System.out.println("Match found in note: [" + note + "] for symptom: " + symptom);*/
                     break;
                 }
             }
         }
-        System.out.println(symptomCount);
         return symptomCount;
     }
 
@@ -109,7 +93,6 @@ public class PatientNoteService {
 
     public Boolean diabeteNone(UUID id) {
         if (symptomCount(id) == 0) {
-            System.out.println(symptomCount(id));
             return true;
         }
         return false;

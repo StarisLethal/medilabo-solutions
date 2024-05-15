@@ -1,5 +1,7 @@
 package com.amenor.openclassrooms.mspatients.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,10 +16,14 @@ public class Patient {
     @Id
     @Field("_id")
     private UUID id;
+    @NotBlank
     private String firstName;
+    @NotBlank
     private String lastName;
+    @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
+    @NotBlank
     private String gender;
     private String address;
     private String phone;

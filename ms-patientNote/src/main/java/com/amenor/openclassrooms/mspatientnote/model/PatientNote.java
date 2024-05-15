@@ -1,5 +1,8 @@
 package com.amenor.openclassrooms.mspatientnote.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,9 +14,9 @@ public class PatientNote {
 
     @Id
     public UUID patientNoteId;
+    @NotNull
     public UUID patientId;
-    public String patientName;
-    @TextIndexed
+    @NotEmpty
     public String patientNote;
 
     public UUID getPatientNoteId() {
@@ -30,14 +33,6 @@ public class PatientNote {
 
     public void setPatientId(UUID patientId) {
         this.patientId = patientId;
-    }
-
-    public String getPatientName() {
-        return patientName;
-    }
-
-    public void setPatientName(String patientName) {
-        this.patientName = patientName;
     }
 
     public String getPatientNote() {

@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.amenor.openclassrooms.msfrontend.proxies.PatientProxy;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,6 +18,11 @@ public class PatientController {
 
     public PatientController(PatientProxy patientProxy) {
         this.patientProxy = patientProxy;
+    }
+
+    @GetMapping("/login")
+    public String login(Model model, Principal principal) {
+        return "login";
     }
 
     @GetMapping("/")
