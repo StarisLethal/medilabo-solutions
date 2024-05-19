@@ -6,10 +6,10 @@ don't forget to create db and account
 use db_patients
 
 db.createUser({
-  user: "admin",
+  user: "admin_user",
   pwd: "1234",
   roles: [
-    { role: "dbAdmin", db: "db_patients" },
-    { role: "readWrite", db: "db_patients" }
+    { role: "dbAdmin", db: "db_user" },
+    { role: "readWrite", db: "db_user" }
   ]
 })
