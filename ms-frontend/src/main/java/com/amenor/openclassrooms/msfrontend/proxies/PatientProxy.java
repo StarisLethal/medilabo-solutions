@@ -1,6 +1,8 @@
 package com.amenor.openclassrooms.msfrontend.proxies;
 
 import com.amenor.openclassrooms.msfrontend.bean.PatientBean;
+
+
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
