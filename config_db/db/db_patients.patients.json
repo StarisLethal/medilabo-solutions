@@ -1,0 +1,72 @@
+[{
+  "_id": {
+    "$binary": {
+      "base64": "hEFOxX8pGuXNUx29iXu/pA==",
+      "subType": "03"
+    }
+  },
+  "firstName": "Test",
+  "lastName": "TestNone",
+  "birthDate": {
+    "$date": {
+      "$numberLong": "-94784400000"
+    }
+  },
+  "gender": "F",
+  "address": "1 Brookside St",
+  "phone": "100-222-3333",
+  "_class": "com.amenor.openclassrooms.mspatients.model.Patient"
+},
+{
+  "_id": {
+    "$binary": {
+      "base64": "kUoJ0krk+AX24Cj3z0zNrA==",
+      "subType": "03"
+    }
+  },
+  "firstName": "Test",
+  "lastName": "TestBorderline",
+  "birthDate": {
+    "$date": {
+      "$numberLong": "-773892000000"
+    }
+  },
+  "gender": "M",
+  "address": "2 High St",
+  "phone": "200-333-4444",
+  "_class": "com.amenor.openclassrooms.mspatients.model.Patient"
+},
+{
+  "_id": {
+    "$binary": {
+      "base64": "VEzAVg/5KdWejrZ/6MLamg==",
+      "subType": "03"
+    }
+  },
+  "firstName": "Test",
+  "lastName": "TestInDanger",
+  "birthDate": {
+    "$date": "2004-06-17T22:00:00.000Z"
+  },
+  "gender": "M",
+  "address": "3 Club Road",
+  "phone": "300-444-5555",
+  "_class": "com.amenor.openclassrooms.mspatients.model.Patient"
+},
+{
+  "_id": {
+    "$binary": {
+      "base64": "CUssm1yy9C/ROhEhO77qjA==",
+      "subType": "03"
+    }
+  },
+  "firstName": "Test",
+  "lastName": "TestEarlyOnset",
+  "birthDate": {
+    "$date": "2002-06-27T22:00:00.000Z"
+  },
+  "gender": "F",
+  "address": "4 Valley Dr",
+  "phone": "400-555-6666",
+  "_class": "com.amenor.openclassrooms.mspatients.model.Patient"
+}]

@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "664b079b1cff1e102cdd716d"
+  },
+  "username": "test",
+  "password": "$2a$10$L.ZkUIxaJfj8/pQFc1dIl.J3FPbTEBmGEeGPHnrUlE1TwjIfrqn.a",
+  "_class": "com.amenor.openclassrooms.msauthserv.model.UserCredential"
+},
+{
+  "_id": {
+    "$oid": "664df8898383f47c23c34350"
+  },
+  "username": "user",
+  "password": "$2a$10$.IU/GZFJVg.4GFuN5QjoTe1A1w0nENHAAiprmnH3yy7a/rKmzhgkC",
+  "_class": "com.amenor.openclassrooms.msfrontend.model.User"
+}]

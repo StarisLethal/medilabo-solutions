@@ -1,0 +1,144 @@
+[{
+  "_id": {
+    "$binary": {
+      "base64": "S0f/icEeuBFRUgfUYnzElw==",
+      "subType": "03"
+    }
+  },
+  "patientId": {
+    "$binary": {
+      "base64": "hEFOxX8pGuXNUx29iXu/pA==",
+      "subType": "03"
+    }
+  },
+  "patientNote": "Le patient déclare qu'il 'se sent très bien' Poids égal ou inférieur au poids recommandé",
+  "_class": "com.amenor.openclassrooms.mspatientnote.model.PatientNote"
+},
+{
+  "_id": {
+    "$binary": {
+      "base64": "NEKHraDKDnKSgQWhj+eYoA==",
+      "subType": "03"
+    }
+  },
+  "patientId": {
+    "$binary": {
+      "base64": "kUoJ0krk+AX24Cj3z0zNrA==",
+      "subType": "03"
+    }
+  },
+  "patientNote": "Le patient déclare qu'il ressent beaucoup de stress au travail Il se plaint également que son audition est anormale dernièrement",
+  "_class": "com.amenor.openclassrooms.mspatientnote.model.PatientNote"
+},
+{
+  "_id": {
+    "$binary": {
+      "base64": "8k7qkbmn7aQ12I5LFbUAjg==",
+      "subType": "03"
+    }
+  },
+  "patientId": {
+    "$binary": {
+      "base64": "kUoJ0krk+AX24Cj3z0zNrA==",
+      "subType": "03"
+    }
+  },
+  "patientNote": "Le patient déclare avoir fait une réaction aux médicaments au cours des 3 derniers mois Il remarque également que son audition continue d'être anormale",
+  "_class": "com.amenor.openclassrooms.mspatientnote.model.PatientNote"
+},
+{
+  "_id": {
+    "$binary": {
+      "base64": "XEv4bHc/l1VdzpxPUgMLtg==",
+      "subType": "03"
+    }
+  },
+  "patientId": {
+    "$binary": {
+      "base64": "VEzAVg/5KdWejrZ/6MLamg==",
+      "subType": "03"
+    }
+  },
+  "patientNote": "Le patient déclare qu'il fume depuis peu",
+  "_class": "com.amenor.openclassrooms.mspatientnote.model.PatientNote"
+},
+{
+  "_id": {
+    "$binary": {
+      "base64": "fE2z2TFybO4P2qmGY6RKuw==",
+      "subType": "03"
+    }
+  },
+  "patientId": {
+    "$binary": {
+      "base64": "VEzAVg/5KdWejrZ/6MLamg==",
+      "subType": "03"
+    }
+  },
+  "patientNote": "Le patient déclare qu'il est fumeur et qu'il a cessé de fumer l'année dernière Il se plaint également de crises d’apnée respiratoire anormales Tests de laboratoire indiquant un taux de cholestérol LDL élevé",
+  "_class": "com.amenor.openclassrooms.mspatientnote.model.PatientNote"
+},
+{
+  "_id": {
+    "$binary": {
+      "base64": "JU2TLG8CWDKO6wxQW10otQ==",
+      "subType": "03"
+    }
+  },
+  "patientId": {
+    "$binary": {
+      "base64": "CUssm1yy9C/ROhEhO77qjA==",
+      "subType": "03"
+    }
+  },
+  "patientNote": "Le patient déclare qu'il lui est devenu difficile de monter les escaliers Il se plaint également d’être essoufflé Tests de laboratoire indiquant que les anticorps sont élevés Réaction aux médicaments",
+  "_class": "com.amenor.openclassrooms.mspatientnote.model.PatientNote"
+},
+{
+  "_id": {
+    "$binary": {
+      "base64": "nE1eNTpSVZY8SC69ZgmJtA==",
+      "subType": "03"
+    }
+  },
+  "patientId": {
+    "$binary": {
+      "base64": "CUssm1yy9C/ROhEhO77qjA==",
+      "subType": "03"
+    }
+  },
+  "patientNote": "Le patient déclare qu'il a mal au dos lorsqu'il reste assis pendant longtemps",
+  "_class": "com.amenor.openclassrooms.mspatientnote.model.PatientNote"
+},
+{
+  "_id": {
+    "$binary": {
+      "base64": "EkRC/oKbEgq73wJtmZOskg==",
+      "subType": "03"
+    }
+  },
+  "patientId": {
+    "$binary": {
+      "base64": "CUssm1yy9C/ROhEhO77qjA==",
+      "subType": "03"
+    }
+  },
+  "patientNote": "Le patient déclare avoir commencé à fumer depuis peu Hémoglobine A1C supérieure au niveau recommandé",
+  "_class": "com.amenor.openclassrooms.mspatientnote.model.PatientNote"
+},
+{
+  "_id": {
+    "$binary": {
+      "base64": "BEWkR7QoOxPtX5g3NEW6pg==",
+      "subType": "03"
+    }
+  },
+  "patientId": {
+    "$binary": {
+      "base64": "CUssm1yy9C/ROhEhO77qjA==",
+      "subType": "03"
+    }
+  },
+  "patientNote": "Taille, Poids, Cholestérol, Vertige et Réaction",
+  "_class": "com.amenor.openclassrooms.mspatientnote.model.PatientNote"
+}]
