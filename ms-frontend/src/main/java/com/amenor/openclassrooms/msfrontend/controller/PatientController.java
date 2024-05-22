@@ -20,12 +20,7 @@ public class PatientController {
         this.patientProxy = patientProxy;
     }
 
-    @GetMapping("/login")
-    public String login(Model model, Principal principal) {
-        return "login";
-    }
-
-    @GetMapping("/")
+    @GetMapping("/home")
     public String home(Model model) {
         List<PatientBean> patients = patientProxy.getPatients();
         model.addAttribute("patients", patients);
