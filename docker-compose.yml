@@ -1,0 +1,101 @@
+services:
+
+  ms-config:
+
+    image: ms-config:1
+    ports:
+      - 9500:9500
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9500/actuator/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  ms-discovery:
+
+    image: ms-discovery:1
+    ports:
+      - 9502:9502
+    depends_on:
+      ms-config:
+        condition: service_healthy
+
+  ms-gateway:
+
+    image: ms-gateway:1
+    ports:
+      - 9504:9504
+    depends_on:
+      ms-config:
+        condition: service_healthy
+
+  ms-patients:
+
+    image: ms-patients:1
+    ports:
+      - 9560:9560
+    depends_on:
+      ms-config:
+        condition: service_healthy
+
+  ms-patientnote:
+
+    image: ms-patientnote:1
+    ports:
+      - 9565:9565
+    depends_on:
+      ms-config:
+        condition: service_healthy
+      
+  ms-frontend:
+
+    image: ms-frontend:1
+    ports:
+      - 8080:8080
+    depends_on:
+      ms-config:
+        condition: service_healthy  
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - C:/Users/letha/IdeaProjects/medilabo-solutions/db:/data/db
+    ports:
+      - "27017:27017"   
+      
+  mongodb_note:
+    image: mongo:latest
+    container_name: mongodb_note
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - C:/Users/letha/IdeaProjects/medilabo-solutions/db_note:/data/db
+    ports:
+      - "27027:27027"
+    command: ["mongod", "--port", "27027", "--bind_ip", "0.0.0.0"]  
+
+  mongodb_user:
+    image: mongo:latest
+    container_name: mongodb_user
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - C:/Users/letha/IdeaProjects/medilabo-solutions/db_user:/data/db
+    ports:
+      - "27037:27037"
+    command: ["mongod", "--port", "27037", "--bind_ip", "0.0.0.0"]     
+
+
+
+
+
+
