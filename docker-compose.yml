@@ -64,7 +64,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
-      - C:/Users/letha/IdeaProjects/medilabo-solutions/db:/data/db
+      - ./db:/data/db
     ports:
       - "27017:27017"   
       
@@ -76,7 +76,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
-      - C:/Users/letha/IdeaProjects/medilabo-solutions/db_note:/data/db
+      - ./db_note:/data/db
     ports:
       - "27027:27027"
     command: ["mongod", "--port", "27027", "--bind_ip", "0.0.0.0"]  
@@ -89,7 +89,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
-      - C:/Users/letha/IdeaProjects/medilabo-solutions/db_user:/data/db
+      - ./db_user:/data/db
     ports:
       - "27037:27037"
     command: ["mongod", "--port", "27037", "--bind_ip", "0.0.0.0"]     

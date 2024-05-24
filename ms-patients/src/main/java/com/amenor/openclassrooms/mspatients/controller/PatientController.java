@@ -76,7 +76,7 @@ public class PatientController {
         }
     }
 
-    @DeleteMapping("/{id}")
+/*    @DeleteMapping("/{id}")
     public ResponseEntity<String> deletePatient(@PathVariable UUID id) {
         try {
             logger.info("deletePatient called");
@@ -86,5 +86,5 @@ public class PatientController {
             logger.log(Level.SEVERE, "deletePatient failed");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-    }
+    }*/
 }
