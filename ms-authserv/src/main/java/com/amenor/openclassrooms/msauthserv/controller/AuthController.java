@@ -1,43 +1,36 @@
 package com.amenor.openclassrooms.msauthserv.controller;
 
-import com.amenor.openclassrooms.msauthserv.dto.AuthRequest;
-import com.amenor.openclassrooms.msauthserv.model.UserCredential;
+import com.amenor.openclassrooms.msauthserv.model.AuthRequest;
+import com.amenor.openclassrooms.msauthserv.model.AuthResponse;
 import com.amenor.openclassrooms.msauthserv.service.AuthService;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.logging.Logger;
+
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api-auth/v1/auth")
 public class AuthController {
 
-    @Autowired
-    private AuthService authService;
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private static final Logger logger = Logger.getLogger(AuthController.class.getName());
+    private final AuthService authService;
 
-    @PostMapping("/register")
-    public String addNewUser(@RequestBody UserCredential userCredential) {
-        return authService.saveUser(userCredential);
+    @Autowired
+    public AuthController(AuthService authService) {
+        this.authService = authService;
     }
 
-    @PostMapping("/token")
-    public String getToken(@RequestBody AuthRequest authRequest) {
-        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
-        if (authenticate.isAuthenticated()) {
-            return authService.generateToken(authRequest.getUsername());
-        }else {
-            throw new BadCredentialsException("Bad credentials");
-        }
 
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
+        return ResponseEntity.status(201).body(authService.login(authRequest));
     }
 
-    @GetMapping("/validate")
-    public String validateToken(@RequestParam("token") String token) {
-        authService.validateToken(token);
-        return "Valid Token";
+    @GetMapping("/validate/{token}")
+    public ResponseEntity<?> validate(@PathVariable String token) {
+        return ResponseEntity.status(200).body(authService.validate(token));
     }
 }
