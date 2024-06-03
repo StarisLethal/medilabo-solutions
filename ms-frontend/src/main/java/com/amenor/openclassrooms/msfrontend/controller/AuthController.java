@@ -4,7 +4,6 @@ package com.amenor.openclassrooms.msfrontend.controller;
 import com.amenor.openclassrooms.msfrontend.bean.AuthRequestBean;
 import com.amenor.openclassrooms.msfrontend.bean.AuthResponseBean;
 import com.amenor.openclassrooms.msfrontend.proxies.AuthProxy;
-import feign.FeignException;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,20 +20,27 @@ public class AuthController {
         this.authProxy = authProxy;
     }
 
-    @GetMapping("/")
-    public String login(Model model) {
-        model.addAttribute("AuthRequest", new AuthRequestBean());
+    @GetMapping("/login")
+    public String login() {
         return "login";
     }
-    @PostMapping("/auth")
-    public String login(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("rememberMe") boolean rememberMe, HttpSession session) {
-        AuthRequestBean requestBean = new AuthRequestBean(username, password, rememberMe);
+
+    @PostMapping("/login")
+    public String login(@RequestParam("email") String email,
+                        @RequestParam("password") String password,
+                        HttpSession session,
+                        Model model) {
         try {
-            AuthResponseBean responseBean = authProxy.login(requestBean);
-            session.setAttribute("jwt", responseBean.getToken());
-            return "redirect:/home";
-        } catch (FeignException e) {
-            return "redirect:/login?error";
+            AuthRequestBean requestBean = new AuthRequestBean(email, password);
+
+            AuthResponseBean authResponseBean = authProxy.login(requestBean);
+
+            session.setAttribute("token", authResponseBean.getToken());
+
+            return "redirect:/";
+        } catch (Exception e) {
+            model.addAttribute("error", "Invalid email or password");
+            return "login";
         }
     }
 }

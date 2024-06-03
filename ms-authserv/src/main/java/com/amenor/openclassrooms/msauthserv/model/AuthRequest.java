@@ -12,5 +12,4 @@ public class AuthRequest {
     private String email;
     @NotNull(message = "password:Null") @NotBlank(message = "password:Blank")
     private String password;
-    private boolean rememberMe;
 }

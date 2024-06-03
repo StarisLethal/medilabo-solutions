@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.amenor.openclassrooms.msfrontend.proxies.PatientProxy;
 
-import java.security.Principal;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,7 +19,7 @@ public class PatientController {
         this.patientProxy = patientProxy;
     }
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public String home(Model model) {
         List<PatientBean> patients = patientProxy.getPatients();
         model.addAttribute("patients", patients);
@@ -48,7 +47,6 @@ public class PatientController {
 
     @PutMapping("/editedRecord")
     public String editRecord(@ModelAttribute PatientBean patientBean, Model model) {
-
         model.addAttribute("patient", patientProxy.getPatientById(patientBean.getId()));
         patientProxy.updatePatient(patientBean.getId(), patientBean);
         return "redirect:";

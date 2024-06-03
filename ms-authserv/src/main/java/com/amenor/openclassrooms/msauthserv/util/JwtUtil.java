@@ -22,10 +22,10 @@ public class JwtUtil {
         this.secret = secret;
     }
 
-    public String get(String email, boolean rememberMe) {
+    public String get(String email) {
         try {
             return JWT.create().withSubject(email).withIssuedAt(new Date())
-                    .withExpiresAt(Instant.ofEpochSecond(new Date().getTime() + (rememberMe ? 864000000 : 7200000))).sign(Algorithm.HMAC256(secret));
+                    .withExpiresAt(Instant.ofEpochSecond(new Date().getTime())).sign(Algorithm.HMAC256(secret));
         } catch (Exception e) {
            throw new AuthException.AuthFailedException("Auth failed");
         }

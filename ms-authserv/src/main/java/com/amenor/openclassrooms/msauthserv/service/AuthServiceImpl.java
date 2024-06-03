@@ -37,7 +37,7 @@ public class AuthServiceImpl implements AuthService {
         if (!bCryptPasswordEncoder.matches(authRequest.getPassword(), user.get().getPassword())) {
             throw new AuthException.AuthFailedException("Invalid email or password");
         }
-        return AuthResponse.builder().token(jwtUtil.get(authRequest.getEmail(), authRequest.isRememberMe())).build();
+        return AuthResponse.builder().token(jwtUtil.get(authRequest.getEmail())).build();
     }
 
     @Override

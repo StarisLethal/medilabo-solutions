@@ -10,5 +10,4 @@ import lombok.NoArgsConstructor;
 public class AuthRequestBean {
     private String email;
     private String password;
-    private boolean rememberMe;
 }

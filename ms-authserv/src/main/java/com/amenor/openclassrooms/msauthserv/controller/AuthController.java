@@ -1,7 +1,6 @@
 package com.amenor.openclassrooms.msauthserv.controller;
 
 import com.amenor.openclassrooms.msauthserv.model.AuthRequest;
-import com.amenor.openclassrooms.msauthserv.model.AuthResponse;
 import com.amenor.openclassrooms.msauthserv.service.AuthService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +25,13 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
+        logger.info("Login request: " + authRequest);
         return ResponseEntity.status(201).body(authService.login(authRequest));
     }
 
     @GetMapping("/validate/{token}")
     public ResponseEntity<?> validate(@PathVariable String token) {
+        logger.info("Validate request: " + token);
         return ResponseEntity.status(200).body(authService.validate(token));
     }
 }

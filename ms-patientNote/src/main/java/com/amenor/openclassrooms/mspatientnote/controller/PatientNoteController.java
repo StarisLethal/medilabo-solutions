@@ -3,12 +3,10 @@ package com.amenor.openclassrooms.mspatientnote.controller;
 import com.amenor.openclassrooms.mspatientnote.model.PatientNote;
 import com.amenor.openclassrooms.mspatientnote.service.PatientNoteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -25,7 +23,7 @@ public class PatientNoteController {
     private PatientNoteService patientNoteService;
 
     @GetMapping("")
-    public ResponseEntity<List<PatientNote>> getPatientNotes() {
+    public ResponseEntity<List<PatientNote>> getPatientNotes(@RequestHeader("Authorization") String token) {
         try {
             logger.info("getPatientNotes called");
             List<PatientNote> patientNotes = patientNoteService.getAllPatientNotes();
@@ -37,7 +35,7 @@ public class PatientNoteController {
     }
 
     @GetMapping("/{patientId}")
-    public ResponseEntity<List<PatientNote>> getPatientNoteByPatientId(@PathVariable("patientId") UUID patientId) {
+    public ResponseEntity<List<PatientNote>> getPatientNoteByPatientId(@PathVariable("patientId") UUID patientId, @RequestHeader("Authorization") String token) {
         try {
             logger.info("getPatientNoteById called");
             List<PatientNote> patientNotes = patientNoteService.getPatientNotebyPatientId(patientId);
@@ -49,7 +47,7 @@ public class PatientNoteController {
     }
 
     @GetMapping("/byNote/{patientNoteId}")
-    public ResponseEntity<Optional<PatientNote>> getPatientNoteById(@PathVariable("patientNoteId") UUID patientNoteId) {
+    public ResponseEntity<Optional<PatientNote>> getPatientNoteById(@PathVariable("patientNoteId") UUID patientNoteId, @RequestHeader("Authorization") String token) {
         try {
             logger.info("getPatientNoteByPatientId called");
             Optional<PatientNote> patientNotes = patientNoteService.getPatientNoteByID(patientNoteId);
@@ -61,7 +59,7 @@ public class PatientNoteController {
     }
 
     @PostMapping("")
-    public ResponseEntity<PatientNote> createPatientNote(@RequestBody PatientNote patientNote) {
+    public ResponseEntity<PatientNote> createPatientNote(@RequestBody PatientNote patientNote, @RequestHeader("Authorization") String token) {
         try {
             logger.info("createPatientNote called");
             PatientNote newpatientNote = patientNoteService.createPatientNote(patientNote);
@@ -74,8 +72,9 @@ public class PatientNoteController {
 
     @GetMapping("/diagnose")
     public ResponseEntity<String> getDiabeteDiagnose(@RequestParam("patientId") UUID patientId,
-                                                    @RequestParam("gender") String gender,
-                                                    @RequestParam("birthDate") String birthDate) {
+                                                     @RequestParam("gender") String gender,
+                                                     @RequestParam("birthDate") String birthDate,
+                                                     @RequestHeader("Authorization") String token) {
         try {
             logger.info("getDiabeteDignose called");
             String diagnose = patientNoteService.diabeteDiagnose(birthDate, gender, patientId);
