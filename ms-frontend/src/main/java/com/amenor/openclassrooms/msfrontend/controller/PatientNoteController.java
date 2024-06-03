@@ -2,7 +2,6 @@ package com.amenor.openclassrooms.msfrontend.controller;
 
 import com.amenor.openclassrooms.msfrontend.bean.PatientNoteBean;
 import com.amenor.openclassrooms.msfrontend.proxies.PatientNoteProxy;
-import com.amenor.openclassrooms.msfrontend.proxies.PatientProxy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
 import java.util.UUID;
 
 @Controller
