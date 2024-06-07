@@ -35,7 +35,7 @@ public class GatewayConfig {
                                 .prefixPath(patientNotesPrefix))
                         .uri("lb://MS-PATIENTNOTES"))
                 .route("ms-authserv", r -> r.path("/auth/**")
-                        .filters(f -> f.prefixPath("/api-auth/v1"))  // Ensure this prefix path aligns with your properties
+                        .filters(f -> f.prefixPath("/api-auth/v1"))
                         .uri("lb://MS-AUTHSERV"))
                 .route("ms-frontend", r -> r.path("/ms-frontend/**")
                         .uri("lb://MS-FRONTEND"))

@@ -1,16 +1,10 @@
 [{
-  "_id": {
-    "$oid": "664b079b1cff1e102cdd716d"
-  },
-  "username": "test",
-  "password": "$2a$10$L.ZkUIxaJfj8/pQFc1dIl.J3FPbTEBmGEeGPHnrUlE1TwjIfrqn.a",
-  "_class": "com.amenor.openclassrooms.msauthserv.model.UserCredential"
+  "_id": "test",
+  "password": "$2a$10$P2vcu9dLxT.K8gl2XoMgi.rL5IEpjjmeac4N0Isa2IbU4WSC2lWg2",
+  "_class": "com.amenor.openclassrooms.msauthserv.model.User"
 },
 {
-  "_id": {
-    "$oid": "664df8898383f47c23c34350"
-  },
-  "username": "user",
-  "password": "$2a$10$.IU/GZFJVg.4GFuN5QjoTe1A1w0nENHAAiprmnH3yy7a/rKmzhgkC",
-  "_class": "com.amenor.openclassrooms.msfrontend.model.User"
+  "_id": "test2",
+  "password": "$2a$10$f6u6ain9CWtyTLmuQA36d.FtxvcGAFbipg7Ot6WObznY.Y.KtOjha",
+  "_class": "com.amenor.openclassrooms.msauthserv.model.User"
 }]
